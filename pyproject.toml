@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "football-highlights"
+version = "0.1.0"
+description = "Fully local NFL broadcast analysis and vertical highlight rendering"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Private" }
+dependencies = [
+  "numpy>=2,<3",
+  "opencv-python-headless>=4.10,<5",
+  "typer>=0.12,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.8,<1",
+]
+analysis = [
+    "faster-whisper>=1.1,<2",
+    "rapidocr-onnxruntime>=1.4,<2",
+]
+
+[project.scripts]
+nfl-reel = "football_highlights.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/football_highlights"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

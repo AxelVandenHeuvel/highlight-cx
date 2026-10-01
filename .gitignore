@@ -1,0 +1,20 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+
+# Local inputs, model weights, caches, and generated media.
+data/
+models/
+output/
+*.mp4
+*.mkv
+*.mov
+*.wav
+
